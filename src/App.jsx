@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import "./App.css"
 import CountComp from "./Components/CountComp";
 import SubName from "./Components/SubName";
@@ -13,15 +13,30 @@ import HomeComp from "./Components/Pages/HomeComp";
 import ProductsComp from "./Components/Pages/ProductsComp";
 import AboutComp from "./Components/Pages/AboutComp";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import GrocceryListComp from "./Components/GrocceryListComp";
 import ReducerCounter from "./Components/ReducerCounter";
-import ProductCompi from "./Components/ProductCompi";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap';
+import ProductCompi from "./Components/ProductCompi";
 
+const MyProductComp = React.lazy(()=> import("./Components/ProductCompi"))
 
 function App() {
   const [islog, setislog] = useState(false);
+
+  // const [Comp,setComp]= useState(null)
+
+
+  // const dynamicimport  = async () =>{
+  //   let LoadedComponent =  await import("./Components/GrocceryListComp")
+
+  //   setComp(()=>LoadedComponent.default)
+
+
+  // }
+
+
+
+
 
   const handlelogout = () => {
     setislog(true);
@@ -62,13 +77,26 @@ function App() {
       </Routes> */}
 
 
-{/* <GrocceryListComp/> */}
+
 
 {/* <ReducerCounter/> */}
 
-{/* <ProductsComp/> */}
+{/* <ProductsComp/>
+
+{Comp ? 
+<Comp/>
+:""
+} */}
+
+{/* <button onClick={dynamicimport}>Todo List</button> */}
+
+{/* <Suspense fallback={<span class="loader">ss</span>}> */}
+
+{/* <MyProductComp/> */}
+{/* </Suspense> */}
 
 <ProductCompi/>
+
 
     </>
   );

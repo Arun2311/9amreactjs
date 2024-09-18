@@ -2,33 +2,34 @@ import React from "react";
 import useFetchApi from "./useFetchApi";
 
 export default function ProductCompi() {
-  const { data } = useFetchApi("https://fakestoreapi.com/products");
+  const { data, isloading } = useFetchApi("https://fakestoreapi.com/products");
   return (
-    <div>
-      {console.log(data)}
+    <>
+      {isloading ? (
+        <span class="loader">ss</span>
+      ) : (
+        <div>
+          {console.log(data)}
 
-      <h1>Arun api call useefect</h1>
-      {/* <button type="button" class="btn btn-success">Success</button> */}
-<div className="row">
-      {data.map((da) => (
-
-        <div class="card col-3" >
-          <img src={da.image} class="card-img-top" alt="..." />
-          <div class="card-body">
-            <h5 class="card-title">{da.title}</h5>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" class="btn btn-primary">
-              Go somewhere
-            </a>
+          {/* <button type="button" class="btn btn-success">Success</button> */}
+          <div className="row">
+            {data.map((da) => (
+              <div class="card col-3">
+                <img src={da.image} class="card-img-top" alt="..." />
+                <div class="card-body">
+                  <h5 class="card-title">{da.title}</h5>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make
+                    up the bulk of the card's content.
+                  </p>
+                  <a href="#" class="btn btn-primary">
+                    Go somewhere
+                  </a>
+                </div>
+              </div>
+            ))}
           </div>
-        </div>
-
-      ))}
-</div>
-      {/* <div class="accordion" id="accordionExample">
+          {/* <div class="accordion" id="accordionExample">
   <div class="accordion-item">
     <h2 class="accordion-header">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -66,6 +67,8 @@ export default function ProductCompi() {
     </div>
   </div>
 </div> */}
-    </div>
+        </div>
+      )}
+    </>
   );
 }
