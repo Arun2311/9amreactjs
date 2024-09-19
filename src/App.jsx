@@ -17,6 +17,9 @@ import ReducerCounter from "./Components/ReducerCounter";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap';
 import ProductCompi from "./Components/ProductCompi";
+import CartCount from "./Components/CartCount";
+import ProductCart from "./Components/ProductCart";
+import { CounterProvider } from "./Components/Context/CounterContext";
 
 const MyProductComp = React.lazy(()=> import("./Components/ProductCompi"))
 
@@ -95,8 +98,14 @@ function App() {
 {/* <MyProductComp/> */}
 {/* </Suspense> */}
 
-<ProductCompi/>
+{/* <ProductCompi/> */}
 
+<CounterProvider>
+
+<CartCount/>
+<ProductCart/>
+
+</CounterProvider>
 
     </>
   );
